@@ -53,6 +53,9 @@ namespace WebApp
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Admin", policy => policy.RequireClaim(ClaimTypes.Role, "Admin"));
+                options.AddPolicy("ShowOrder", policy => policy.RequireAssertion(ctx =>
+                    ctx.User.IsInRole("Employee")
+                    || ((OrderModel)ctx.Resource).Owner == ctx.User.FindFirst(ClaimTypes.NameIdentifier).Value));
             });
 
             // Add application services.
