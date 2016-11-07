@@ -1,0 +1,12 @@
+﻿@model OrderModel
+@inject Microsoft.AspNetCore.Authorization.IAuthorizationService AuthorizationService
+@{
+    ViewData["Title"] = $"Order {Model.OrderId}";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if(await AuthorizationService.AuthorizeAsync(User, Model, "EditOrder"))
+    {
+<button>Edit Order</button>
+    }

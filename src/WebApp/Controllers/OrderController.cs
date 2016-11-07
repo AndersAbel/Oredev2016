@@ -25,7 +25,7 @@ namespace WebApp.Controllers
 
             if(await _authorizationService.AuthorizeAsync(User, order, "ShowOrder"))
             {
-                return View();
+                return View(order);
             }
             return new ChallengeResult();
         }
