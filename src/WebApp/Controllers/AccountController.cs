@@ -436,6 +436,11 @@ namespace WebApp.Controllers
             }
         }
 
+        public IActionResult AccessDenied(string returnUrl)
+        {
+            return View(model: returnUrl);
+        }
+
         #region Helpers
 
         private void AddErrors(IdentityResult result)
