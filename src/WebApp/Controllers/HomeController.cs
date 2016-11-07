@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.Controllers
 {
@@ -28,15 +29,14 @@ namespace WebApp.Controllers
                          select u.Email)
                          .First();
 
-            ViewData["Message"] = userEmail;
+            ViewData["Message"] = $"Great user with email {userEmail}";
 
             return View();
         }
 
-        public IActionResult Contact()
+        [Authorize]
+        public IActionResult Authorized()
         {
-            ViewData["Message"] = "Your contact page.";
-
             return View();
         }
 
