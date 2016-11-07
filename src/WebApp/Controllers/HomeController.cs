@@ -40,6 +40,7 @@ namespace WebApp.Controllers
             return View();
         }
 
+        [Authorize(Policy = "Admin")]
         [Authorize(Roles = "Admin")]
         public IActionResult Admin()
         {

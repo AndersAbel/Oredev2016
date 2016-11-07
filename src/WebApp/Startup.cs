@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using WebApp.Data;
 using WebApp.Models;
 using WebApp.Services;
+using System.Security.Claims;
 
 namespace WebApp
 {
@@ -48,6 +49,11 @@ namespace WebApp
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin", policy => policy.RequireClaim(ClaimTypes.Role, "Admin"));
+            });
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
