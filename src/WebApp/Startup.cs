@@ -59,6 +59,8 @@ namespace WebApp
                 options.AddPolicy("EditOrder", policy => policy.RequireRole("Employee"));
             });
 
+            services.AddDataProtection();
+
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
