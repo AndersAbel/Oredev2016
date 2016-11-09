@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +15,8 @@ namespace WebApp.Middleware
             AuthenticationScheme = "Dummy";
             CallbackPath = "/signin-dummy";
             DisplayName = "Dummy";
-            
-           
         }
+
+        public ISecureDataFormat<AuthenticationProperties>  SecureDataFormat { get; set; }
     }
 }

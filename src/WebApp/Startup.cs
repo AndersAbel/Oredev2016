@@ -90,7 +90,7 @@ namespace WebApp
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
-            app.UseMiddleware<DummyAuthMiddleware>(Options.Create(new DummyAuthOptions()));
+            app.UseDummyAuthentication();
 
             app.UseMvc(routes =>
             {
